@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
 #
 #    - name: Set up PHP
@@ -20,11 +20,12 @@ jobs:
 #        php-version: 8.1
 
     - name: Deploy via FTP
-      uses: sebastianpopp/ftp-action@v2
+      uses: sebastianpopp/ftp-action@releases/v2
       with:
         host: ${{ secrets.FTP_HOST }}
         user: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         localDir: /home/jk/DS/oscm/dia_jobs/  # Directory with your PHP files
         remoteDir: /home2/imumcrco/public_html/b2c/admin/dia_jobs2/ 
+        options: "--delete --asci"
 
