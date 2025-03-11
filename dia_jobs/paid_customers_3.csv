@@ -1,0 +1,6 @@
+customers_id,platform_name,customers_company,customers_name,customers_last_name,customers_first_name,camera_payment_status,cameras_purchased,date_cam_purchased,customer_paid_up_cam_orders
+54,SafeSchool,,"John Doe",Doe,John,john.kruebbe@gmail.com,9.78,USD,1,2,5,2023-01-30,PENDING,"2023-01-30 03:34:56",0
+56,SafeSchool,,"Ruping Kruebbe",Kruebbe,Ruping,ruping.kruebbe@gmail.com,1.08,USD,1,0.58,9,2025-03-01,PENDING,"2025-03-01 00:12:15",0
+56,SafeSchool,,"Ruping Kruebbe",Kruebbe,Ruping,ruping.kruebbe@gmail.com,1.66,USD,2,0.58,10,2025-03-01,COMPLETED,"2025-03-01 00:42:11",1
+54,SafeSchool,,"John Doe",Doe,John,john.kruebbe@gmail.com,1.08,USD,1,0.58,11,2025-03-02,COMPLETED,"2025-03-02 19:38:50",1
+54,SafeSchool,,"John Doe",Doe,John,john.kruebbe@gmail.com,1.66,USD,2,0.58,12,2025-03-02,COMPLETED,"2025-03-02 19:53:39",1

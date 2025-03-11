@@ -1,0 +1,4 @@
+customers_id,customers_company,customers_name,customers_last_name,customers_first_name,customers_email_address,orders_id,transaction_amount,transaction_currency,transaction_status,transaction_created,customer_paid_up
+54,,"John Doe",Doe,John,john.kruebbe@gmail.com,5,9.78,USD,PENDING,"2023-01-30 03:34:56",0
+55,,"John Kruebbe",Kruebbe,John,jk@best2say.imumcr.com,8,4.50,USD,COMPLETED,"2023-02-26 20:01:58",1
+56,,"Ruping Kruebbe",Kruebbe,Ruping,ruping.kruebbe@gmail.com,9,1.08,USD,COMPLETED,"2025-03-01 00:12:15",1

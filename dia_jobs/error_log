@@ -1,0 +1,5 @@
+[28-Feb-2025 18:49:24 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'ps.plaform_name' in 'where clause' in /home2/imumcrco/public_html/b2c/admin/dia_jobs/eapc_jkv2.php:72
+Stack trace:
+#0 /home2/imumcrco/public_html/b2c/admin/dia_jobs/eapc_jkv2.php(72): mysqli->query('SELECT \n       ...')
+#1 {main}
+  thrown in /home2/imumcrco/public_html/b2c/admin/dia_jobs/eapc_jkv2.php on line 72
