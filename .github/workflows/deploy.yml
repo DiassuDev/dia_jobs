@@ -20,7 +20,7 @@ jobs:
 #        php-version: 8.1
 
     - name: Deploy via FTP
-      uses: sebastianpopp/ftp-action@v1
+      uses: sebastianpopp/ftp-action@v2
       with:
         host: ${{ secrets.FTP_HOST }}
         user: ${{ secrets.FTP_USERNAME }}
