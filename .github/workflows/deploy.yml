@@ -1,0 +1,30 @@
+name: Deploy Diassu Get_Paid_Customers_Orders PHP Script to CSV
+
+on:
+  push:
+    branches:
+      - main  # Deploy only when changes are pushed to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+#
+#    - name: Set up PHP
+#      uses: shivammathur/setup-php@v2
+#      with:
+#        php-version: 8.1
+
+    - name: Deploy via FTP
+      uses: sebastianpopp/ftp-action@v1
+      with:
+        host: ${{ secrets.FTP_HOST }}
+        user: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        localDir: /home/jk/DS/oscm/dia_jobs/  # Directory with your PHP files
+        remoteDir: /home2/imumcrco/public_html/b2c/admin/dia_jobs2/ 
+
