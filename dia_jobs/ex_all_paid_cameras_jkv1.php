@@ -40,6 +40,9 @@ if ($conn->connect_error) {
 $sql = "
 SELECT  /* This is the original query to find all paid not paid orders 
               now as a sub-query */
+            oss.orders_id,            /* New */
+            oss.qty as qty,           /* New */
+            oss.value_inc_tax,        /* New */
             c.customers_id,
             p.platform_name,  /* New */
             o.customers_company, 
@@ -50,9 +53,7 @@ SELECT  /* This is the original query to find all paid not paid orders
             /* o.orders_id, */
             ot.transaction_amount,
             ot.transaction_currency,
-            oss.qty as qty,           /* New */
-            oss.value_inc_tax,        /* New */
-            oss.orders_id,            /* New */
+            /* Old location of qty, value and orders_id */
             DATE(oss.date_added) as date_purchased,   /* New */
             ot.transaction_status,
             ot.date_created,
@@ -86,6 +87,7 @@ SELECT  /* This is the original query to find all paid not paid orders
             AND
             (ot.date_created >= DATE_SUB(CURDATE(), INTERVAL 4 YEAR) OR
             ot.date_created >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)) 
+        ORDER BY oss.orders_id ASC
 ";
 
 // AND ot.transaction_amount IS NOT NULL AND ot.transaction_status IN ('COMPLETED') 
@@ -93,7 +95,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     $fp = fopen('paid_only_customers.csv', 'w');
-    fputcsv($fp, array('customers_id', 'platform_name', 'customers_company', 'customers_name', 'customers_last_name','customers_first_name', 'customers_email_address', 'transaction_amount', 'transaction_currency', 'cam_quantity','value_inc_tax','orders_id', 'date_cam_purchased', 'transaction_status','date_created','orders_paid_up','order_status'));
+    fputcsv($fp, array('orders_id','cam_quantity','value_inc_tax','customers_id', 'platform_name', 'customers_company', 'customers_name', 'customers_last_name','customers_first_name', 'customers_email_address', 'transaction_amount', 'transaction_currency','date_cam_purchased', 'transaction_status','date_created','orders_paid_up','order_status'));
 
     while($row = $result->fetch_assoc()) {
         fputcsv($fp, $row);
