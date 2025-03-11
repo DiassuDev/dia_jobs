@@ -26,6 +26,6 @@ jobs:
         user: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         localDir: "dia_jobs"  # Local Directory with your PHP files
-        remoteDir: "/home2/imumcrco/public_html/b2c/admin/dia_jobs2/" 
+        remoteDir: "public_html/b2c/admin/dia_jobs2/" 
         options: "--delete --asci"
 
