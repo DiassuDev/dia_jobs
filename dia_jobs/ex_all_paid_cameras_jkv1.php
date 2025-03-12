@@ -87,7 +87,7 @@ SELECT  /* This is the original query to find all paid not paid orders
             AND
             (ot.date_created >= DATE_SUB(CURDATE(), INTERVAL 4 YEAR) OR
             ot.date_created >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)) 
-        ORDER BY oss.orders_id ASC
+        ORDER BY oss.orders_id ASC, ot.date_created ASC
 ";
 
 // AND ot.transaction_amount IS NOT NULL AND ot.transaction_status IN ('COMPLETED') 
