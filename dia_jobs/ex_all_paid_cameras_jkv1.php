@@ -69,8 +69,9 @@ SELECT  /* This is the original query to find all paid not paid orders
                ELSE 0
             END AS customer_paid_up,
             o.orders_status,
-            op.products_model,
-            op.products_id
+            op.products_model as cam_model_number,
+            op.products_id as products_id,
+            DATE_ADD(ot.date_created,INTERVAL 1 YEAR) as cam_package_end_date
         FROM
             customers c
         JOIN
@@ -99,7 +100,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     $fp = fopen('paid_only_customers.csv', 'w');
-    fputcsv($fp, array('orders_id','cam_quantity','value_inc_tax','customers_id', 'platform_name', 'customers_company', 'customers_name', 'customers_last_name','customers_first_name', 'customers_email_address', 'transaction_amount', 'transaction_currency','date_cam_purchased', 'transaction_status','date_created','orders_paid_up','order_status'));
+    fputcsv($fp, array('orders_id','cam_quantity','value_inc_tax','customers_id', 'platform_name', 'customers_company', 'customers_name', 'customers_last_name','customers_first_name', 'customers_email_address', 'transaction_amount', 'transaction_currency','date_cam_purchased', 'transaction_status','date_created','orders_paid_up','order_status','cam_model_number','products_id','cam_package_end_date'));
 
     while($row = $result->fetch_assoc()) {
         fputcsv($fp, $row);
