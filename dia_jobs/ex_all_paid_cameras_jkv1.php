@@ -15,6 +15,7 @@
 //                     11) Job  or add logic to this that will help to renew the AI Packages with a yearly and 6 months cost while still main
 // 2025-03-09 - JMK -  Update the column headings to refect the columns in the cameras table in the app.
 //                     Extract all data needed for cameras db and for the Ansible scripts to provision the cameras.
+// 2025-03-31 - JMK -  Extract the model number and calculate the End Date based off of the sale date.
 //
 //                     NOTES About the output:
 //IMPORTANT: NB: 
@@ -67,7 +68,9 @@ SELECT  /* This is the original query to find all paid not paid orders
                WHEN ot.transaction_status = 'PENDING' THEN 0
                ELSE 0
             END AS customer_paid_up,
-            o.orders_status
+            o.orders_status,
+            op.products_model,
+            op.products_id
         FROM
             customers c
         JOIN
@@ -77,6 +80,7 @@ SELECT  /* This is the original query to find all paid not paid orders
                         
         INNER JOIN orders_transactions ot on ot.orders_id =  o.orders_id  
                    AND ot.orders_id = o.orders_id
+        INNER JOIN orders_products op ON o.orders_id = op.orders_id
         INNER JOIN orders_splinters oss ON o.orders_id = oss.orders_id
         WHERE
             ot.transaction_status = 'COMPLETED' 
