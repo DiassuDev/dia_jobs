@@ -109,9 +109,9 @@ SELECT  /* This is the original query to find all paid not paid orders
             oss.value_inc_tax,        /* New */
             c.customers_id,
             p.platform_name,  /* New */
-            c.customers_company, 
-            CleanString(c.customers_company) as customers_company1,
-            o.customers_name,
+            /*c.customers_company,  */
+            CleanString(c.customers_company) as customers_company,
+            o.customers_name, 
             c.customers_lastname,
             c.customers_firstname,
             c.customers_email_address,
